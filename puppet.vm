@@ -1,0 +1,7 @@
+wildfly::resource { '$path':
+  content => {
+    #foreach( $attribute in $attributes )
+      '$attribute.getKey()' => $attribute.getValue(), 
+    #end
+  }
+}
