@@ -21,13 +21,13 @@ From:
 To:
 
 ```puppet
-wildfly::datasources::xa_datasource { 'petshopDSXa':
-  config          => {
-    'driver-name'              => 'postgresql',
-    'jndi-name'                => 'java:jboss/datasources/petshopDSXa',
+wildfly_resource { '/subsystem=datasources/xa-data-source=petshopDSXA':
+  state => {
+    'driver-name'              => 'h2',
+    'jndi-name'                => 'java:jboss/datasources/petshopDSXA',
     'user-name'                => 'petshop',
     'password'                 => 'password',
-    'xa-datasource-class'      => 'org.postgresql.xa.PGXADataSource',
+    'xa-datasource-class'      => 'org.h2.jdbcx.JdbcDataSource',
     'xa-datasource-properties' => {
           'url' => {'value' => 'jdbc:postgresql://10.10.10.10/petshop'}
     },
